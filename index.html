@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.js"
+      integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      var $fname = /^([a-zA-Z]{2,20})$/;
+      var $email = /^\b[A-Z0-9._%-]+@[A-Z0-9.-]+\.[A-Z]{2,8}\b$/i;
+      var $fcontact = /^([0-9]{10})$/;
+      var $fpass = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^\w\s]).{8,12}$/;
+      var $fbankno = /^([a-zA-Z ]{2,60})$/;
+      var $fadd = /^[0-9a-zA-Z]+$/;
+
+      $(document).ready(function () {
+        $("#tname").blur(function () {
+          $("#tnameValidation").empty();
+          if ($(this).val() == "" || $(this).val() == "null") {
+            $("#tnameValidation").html("*Your Name Must requried..!");
+          } else {
+            if (!$(this).val().match($fname)) {
+              $("#tnameValidation").html("*Enter valid name..!");
+            }
+          }
+        });
+
+        $("#tname").keypress(function (e) {
+          $("#tnameValidation").empty();
+          var x =
+            (e.which >= 65 && e.which <= 90) ||
+            (e.which >= 97 && e.which <= 121);
+          if (x == false) {
+            $("#tnameValidation").html("please enter valid Input..!!");
+          }
+          return x;
+        });
+
+// Email validation==============
+
+        $("#temailid").blur(function () {
+          $("#temailidValidation").empty();
+          if ($(this).val() == "" || $(this).val() == "null") {
+            $("#temailidValidation").html("*Your email Must requried..!");
+          } else {
+            if (!$(this).val().match($email)) {
+              $("#temailidValidation").html("*Enter valid email..!");
+            }
+        }
+          });
+
+
+// CONTACT NO validation==============
+
+        $("#tcontactno").blur(function () {
+          $("#tcontactnoValidation").empty();
+          if ($(this).val() == "" || $(this).val() == "null") {
+            $("#tcontactnoValidation").html("*Your number Must requried..!");
+          } else {
+            if (!$(this).val().match($fcontact)) {
+              $("#tcontactnoValidation").html("*Enter valid number..!");
+            }
+        }
+          });
+            
+        $("#tcontactno").keypress(function (e) {
+          $("#tcontactnoValidation").empty();
+          var z =
+            (e.which >= 48 && e.which <= 57);
+          if (z == false) {
+            $("#tcontactnoValidation").html("please enter valid Input..!!");
+          }
+          return z;
+        });
+
+// PASSWORD VALIDATION================
+
+$("#tPwd").blur(function () {
+          $("#tPwdValidation").empty();
+          if ($(this).val() == "" || $(this).val() == "null") {
+            $("#tPwdValidation").html("*Password Must requried..!");
+          } else {
+            if (!$(this).val().match($fpass)) {
+              $("#tPwdValidation").html("*Enter valid Password..!");
+            }
+          }
+        });
+
+// BANK ACCOUNT NUMBER=================
+
+$("#tbankno").blur(function () {
+          $("#tbanknoValidation").empty();
+          if ($(this).val() == "" || $(this).val() == "null") {
+            $("#tbanknoValidation").html("*Your bank acc. no Must requried..!");
+          } else {
+            if (!$(this).val().match($fbankno)) {
+              $("#tbanknoValidation").html("*Enter valid Information..!");
+            }
+        }
+          });
+            
+        $("#tbankno").keypress(function (e) {
+          $("#tbanknoValidation").empty();
+          var w =
+            (e.which >= 48 && e.which <= 57);
+          if (w == false) {
+            $("#tbanknoValidation").html("please enter valid Input..!!");
+          }
+          return w;
+        });
+
+// ADDRESS VALIDATION==============
+
+$("#taddress").blur(function () {
+          $("#taddressValidation").empty();
+          if ($(this).val() == "" || $(this).val() == "null") {
+            $("#taddressValidation").html("*Address Must requried..!");
+          } else {
+            if (!$(this).val().match($fadd)) {
+              $("#taddressValidation").html("*Enter valid Information..!");
+            }
+          }
+        });
+
+
+var tname=false,tcontactno=false,temailid=false,tadd=false;tPwd=false;
+
+
+    });
+    </script>
+    <style>
+      small {
+        color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <input
+      type="text"
+      id="tname"
+      autofocus
+      placeholder="enter name here.."
+    /><br />
+    <small id="tnameValidation"></small>
+    <hr />
+    <input
+      type="text"
+      id="temailid"
+      placeholder="enter email id here.."
+    /><br />
+    <small id="temailidValidation"></small>
+    <hr />
+    <input
+      type="text"
+      id="tcontactno"
+      placeholder="enter contact no. here.."
+    /><br />
+    <small id="tcontactnoValidation"></small>
+    <hr />
+    <input type="password" id="tPwd" placeholder="enter your Password" /><br />
+    <small id="tPwdValidation"></small>
+    <hr />
+    <input
+      type="number"
+      id="tbankno"
+      placeholder="enter bank acc. no.."
+    /><br />
+    <small id="tbanknoValidation"></small>
+    <hr />
+    <textarea
+      rows="5"
+      id="taddress"
+      placeholder="enter address here.."
+    ></textarea
+    ><br />
+    <small id="taddressValidation"></small>
+    <hr />
+    <input type="submit" value="submit" />
+  </body>
+</html>
